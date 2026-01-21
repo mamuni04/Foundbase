@@ -74,22 +74,57 @@ sr.reveal('.home__data, .about__img, .skills__subtitle, .skills__text',{});
 sr.reveal('.home__img, .about__subtitle, .about__text, .skills__img',{delay: 400}); 
 sr.reveal('.home__social-icon',{ interval: 200}); 
 sr.reveal('.skills__data, .work__img, .contact__input',{interval: 200}); 
+/*===== EMAIL JS =====*/
+  (function () {
+    emailjs.init("w1d4ppyEYBRL0_9Hu"); // YOUR public key
+  })();
 
+  document
+    .getElementById("contact__form")
+    .addEventListener("submit", function (e) {
+      e.preventDefault();
 
-
-(function() {
-      emailjs.init("xxs1W4usrzHV2yTwb"); // Replace with your actual public key
-    })();
-
-    document.getElementById('contact__form').addEventListener('submit', function(event) {
-      event.preventDefault();
-
-      emailjs.sendForm('service_mir3x1l', 'template_eopkl8d', this)
-        .then(function(response) {
-           alert('Message sent successfully!');
-        }, function(error) {
-           alert('Failed to send message: ' + error.text);
-        });
+      emailjs.sendForm(
+        "service_uglwbf1",
+        "template_eopkl8d",
+        this
+      ).then(
+        function () {
+          alert("Email sent successfully!");
+          document.getElementById("contact__form").reset();
+        },
+        function (error) {
+          alert("Failed to send email");
+          console.error(error);
+        }
+      );
     });
+/*===== CAROUSEL =====*/
+  const carousel = document.querySelector(".ux-carousel");
+  const track = carousel.querySelector(".ux-carousel-track");
+  const slides = carousel.querySelectorAll(".ux-carousel-slide");
+  const prevBtn = carousel.querySelector(".ux-carousel-prev");
+  const nextBtn = carousel.querySelector(".ux-carousel-next");
 
+  let currentIndex = 0;
+  let startX = 0;
+
+  function updateCarousel(index) {
+    currentIndex = (index + slides.length) % slides.length;
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
+
+  prevBtn.addEventListener("click", () => updateCarousel(currentIndex - 1));
+  nextBtn.addEventListener("click", () => updateCarousel(currentIndex + 1));
+
+  // Touch swipe support
+  track.addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX;
+  });
+
+  track.addEventListener("touchend", e => {
+    const endX = e.changedTouches[0].clientX;
+    if (startX - endX > 50) updateCarousel(currentIndex + 1);
+    if (endX - startX > 50) updateCarousel(currentIndex - 1);
+  });
 
