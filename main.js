@@ -128,3 +128,31 @@ sr.reveal('.skills__data, .work__img, .contact__input',{interval: 200});
     if (endX - startX > 50) updateCarousel(currentIndex - 1);
   });
 
+  const letters = [];
+
+  document.querySelectorAll('.hero__line').forEach(line => {
+    const text = line.textContent.trim();
+    line.innerHTML = '';
+
+    [...text].forEach(char => {
+      const span = document.createElement('span');
+      span.textContent = char;
+      span.className = 'letter';
+      line.appendChild(span);
+      letters.push(span);
+    });
+  });
+
+  let index = 0;
+
+  setInterval(() => {
+    letters[index].classList.add('rotate');
+
+    letters[index].addEventListener(
+      'animationend',
+      () => letters[index].classList.remove('rotate'),
+      { once: true }
+    );
+
+    index = (index + 1) % letters.length;
+  }, 200);
