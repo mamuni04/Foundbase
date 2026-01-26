@@ -94,7 +94,22 @@ a {
     radial-gradient(500px circle at 50% 50%, rgba(76, 110, 255, 0.25), transparent 50%),
     linear-gradient(135deg, #04051a 0%, #0b0830 50%, #04051a 100%);
 }
+.about {
+  padding: 1rem 1rem;
+  background-color: #010101;
+}
 
+.about__container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.about__text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #bdbdbd;
+  margin-bottom: 1.5rem;
+}
 
 .hero__content {
   max-width: 900px;
@@ -212,13 +227,14 @@ a {
 /* ================= PROVIDE ================= */
 .provide-section {
   padding: 0px 10px;
-  background: #010101;
+  background-color: #010101;
 }
-
 .section-title {
   text-align: center;
   font-size: 2.2rem;
-  margin-bottom: 50px;
+  margin-bottom: 35px;
+  color: #fff;
+  background-color: #010101;
 }
 
 .features-grid {
@@ -330,11 +346,13 @@ a {
 .faq-item.active .faq-icon {
   transform: rotate(45deg);
 }
-
 /* ================= CONTACT ================= */
 .contact__container {
   max-width: 600px;
   margin: auto;
+  background-color: #010101;
+  padding: 0rem 2rem;
+  border-radius: 10px;
 }
 
 .contact__input {
@@ -342,13 +360,15 @@ a {
   padding: 14px;
   margin-bottom: 15px;
   border-radius: 6px;
-  border: 1px solid #ccc;
+  border: 1px solid #333;
+  background: #fff;
+  color: #000;
 }
 
 .contact__button {
   width: 100%;
   padding: 14px;
-  background: #7a3cff;
+  background: #7a3cff; /* accent color pops on black */
   border: none;
   color: #fff;
   font-weight: 600;
@@ -356,23 +376,80 @@ a {
   cursor: pointer;
 }
 
-/* ================= FOOTER ================= */
+.contact__button:hover {
+  opacity: 0.9;
+}
+/* Footer Base */
 .custom-footer {
-  background: #0b0d1f;
+  background-color: #010101;
   color: #fff;
-  padding: 40px 20px;
+  padding: 50px 20px;
+  font-family: Arial, sans-serif;
 }
 
 .footer-wrapper {
   max-width: 1200px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2rem;
+  margin: 0 auto;
+  display: flex;
+  gap: 40px;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-.footer-col a {
-  color: #b8b8ff;
+/* Footer Columns */
+.footer-col {
+  min-width: 200px;
+}
+
+.footer-col h4 {
+  font-size: 14px;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+  color: #bbb;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+  color: #fff;
+}
+
+/* Social Media */
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #222;
+  color: #fff;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-social a:hover {
+  background-color: #e1306c; /* Instagram color */
+  transform: translateY(-3px);
+}
+
+.footer-social svg {
+  width: 18px;
+  height: 18px;
 }
 /* SECTION WRAPPER */
 .who-section {
@@ -411,30 +488,18 @@ a {
   margin-bottom: 20px;
   color: #fcfbfb;
 }
-
-/* SUBTEXT */
 .who-we-are p {
   font-size: 20px;
   color: #5b3cff;
 }
-
-/* MOBILE */
-
-
-
-/* Section */
 .card-section{
   padding:1rem 5%;
 }
-
-/* Grid */
 .card-grid{
   display:grid;
   grid-template-columns: repeat(3, 1fr);
   gap:2rem;
 }
-
-/* Card */
 .feature-card{
   position:relative;
   background: #1a1a1c;
@@ -445,20 +510,14 @@ a {
   transition:0.4s ease;
   overflow:hidden;
 }
-
-/* Middle Highlight Card */
 .feature-card.active{
   background:linear-gradient(180deg, rgba(124,58,237,0.25), rgba(0,0,0,0.3));
   border:1px solid rgba(124,58,237,0.4);
 }
-
-/* Hover */
 .feature-card:hover{
   transform:translateY(-10px);
   box-shadow:0 20px 50px rgba(124,58,237,0.15);
 }
-
-/* Icon */
 .card-icon{
   width:52px;
   height:52px;
@@ -470,8 +529,6 @@ a {
   font-size:22px;
   margin-bottom:1.2rem;
 }
-
-/* Number */
 .card-number{
   position:absolute;
   top:20px;
@@ -480,8 +537,9 @@ a {
   font-weight:700;
   color:rgba(255,255,255,0.05);
 }
-
-/* Image */
+.contact{
+  background-color: #010101;
+}
 .card-image{
   background:#000;
   border-radius:16px;
@@ -664,6 +722,22 @@ a {
 
   .card-number{
     font-size:48px;
+  }
+}
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-wrapper {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .footer-col {
+    text-align: center;
+  }
+
+  .footer-social {
+    display: flex;
+    justify-content: center;
   }
 }
 /* ================= MOBILE ================= */
