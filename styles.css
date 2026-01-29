@@ -263,37 +263,74 @@ a {
   font-size: 2.6rem;
   margin-bottom: 12px;
 }
-
-/* ================= CAROUSEL ================= */
-.ux-carousel {
-  max-width: 900px;
-  margin: 60px auto;
-  aspect-ratio: 16 / 9;
-  border-radius: 14px;
+/* Slider wrapper */
+.uq-slider {
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  height: 60vh;              /* Desktop height */
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
-.ux-carousel-track {
-  display: flex;
+/* Adjust height for mobile */
+@media (max-width: 768px) {
+  .uq-slider {
+    height: 40vh;
+  }
+}
+
+/* Track */
+.uq-slider__track {
+  width: 100%;
   height: 100%;
-  transition: transform 0.4s ease;
+  position: relative;
 }
 
-.ux-carousel-slide {
-  min-width: 100%;
+/* Slides */
+.uq-slider__slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* 🔥 This makes image cover desktop + mobile */
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
-.ux-carousel-btn {
+/* Active slide */
+.uq-slider__slide--active {
+  opacity: 1;
+}
+
+/* Buttons */
+.uq-slider__btn {
   position: absolute;
   top: 50%;
+  border-radius: 50%;
   transform: translateY(-50%);
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.5);
   color: #fff;
   border: none;
-  border-radius: 50%;
-  padding: 6px 12px;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
   cursor: pointer;
+  z-index: 10;
+}
+
+.uq-slider__btn--prev {
+  left: 10px;
+}
+
+.uq-slider__btn--next {
+  right: 10px;
+}
+
+/* Smaller buttons on mobile */
+@media (max-width: 768px) {
+  .uq-slider__btn {
+    font-size: 1.5rem;
+    padding: 0.4rem 0.8rem;
+  }
 }
 
 /* ================= FAQ ================= */

@@ -99,23 +99,28 @@ sr.reveal('.skills__data, .work__img, .contact__input',{interval: 200});
         }
       );
     });
-/*===== CAROUSEL =====*/
-  const carousel = document.querySelector(".ux-carousel");
-  const track = carousel.querySelector(".ux-carousel-track");
-  const slides = carousel.querySelectorAll(".ux-carousel-slide");
-  const prevBtn = carousel.querySelector(".ux-carousel-prev");
-  const nextBtn = carousel.querySelector(".ux-carousel-next");
 
-  let currentIndex = 0;
-  let startX = 0;
 
-  function updateCarousel(index) {
-    currentIndex = (index + slides.length) % slides.length;
-    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+  const slides = document.querySelectorAll('.uq-slider__slide');
+  const prevBtn = document.querySelector('.uq-slider__btn--prev');
+  const nextBtn = document.querySelector('.uq-slider__btn--next');
+
+  let current = 0;
+
+  function showSlide(index) {
+    slides.forEach(slide => slide.classList.remove('uq-slider__slide--active'));
+    slides[index].classList.add('uq-slider__slide--active');
   }
 
-  prevBtn.addEventListener("click", () => updateCarousel(currentIndex - 1));
-  nextBtn.addEventListener("click", () => updateCarousel(currentIndex + 1));
+  nextBtn.addEventListener('click', () => {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  });
+
+  prevBtn.addEventListener('click', () => {
+    current = (current - 1 + slides.length) % slides.length;
+    showSlide(current);
+  });
 
   // Touch swipe support
   track.addEventListener("touchstart", e => {
