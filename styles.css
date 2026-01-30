@@ -1049,6 +1049,6 @@ a {
 @media (max-width: 768px) {
   .hero-banner {
     position: relative; /* required */
-    top: 70px;
+    top: 65px;
   }
 }
