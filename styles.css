@@ -46,6 +46,11 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background:
+    radial-gradient(600px circle at 15% 20%, rgba(111, 60, 255, 0.45), transparent 40%),
+    radial-gradient(700px circle at 85% 70%, rgba(255, 45, 149, 0.45), transparent 45%),
+    radial-gradient(500px circle at 50% 50%, rgba(76, 110, 255, 0.25), transparent 50%),
+    linear-gradient(135deg, #04051a 0%, #0b0830 50%, #04051a 100%);
 }
 
 .nav__logo img {
@@ -1029,3 +1034,21 @@ a {
         display: none;
       }
     }
+.hero-banner {
+  width: 100%;
+  overflow: hidden;
+}
+
+.hero-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .hero-banner {
+    position: relative; /* required */
+    top: 70px;
+  }
+}
